@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routinefy - Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body class="dashboard-body d-flex flex-column min-vh-100">
+
+    <header class="dashboard-header bg-white shadow-sm py-3 px-4 d-flex justify-content-between align-items-center">
+        <h1 class="logo m-0 fw-bold fs-3">Routinefy</h1>
+        <nav class="nav-links d-flex gap-3">
+            <a href="#" class="btn btn-dark btn-sm rounded-pill px-3 active">Dashboard</a>
+            <a href="analytics.html" class="nav-link pt-1 text-dark">Analytics</a>
+            <a href="index.html" class="nav-link pt-1 text-dark">Log out</a>
+        </nav>
+    </header>
+
+    <main class="dashboard-container container my-5 flex-grow-1">
+        
+        <div class="welcome-row d-flex justify-content-between align-items-center mb-4">
+            <h2 class="fs-4 m-0">Welcome User 👋</h2>
+            <button class="btn btn-dark btn-add">+ Add New Habit</button>
+        </div>
+
+        <div class="habits-list d-flex flex-column gap-3">
+            
+            <div class="habit-row p-3 bg-light rounded d-flex align-items-center justify-content-between border-start border-4 border-secondary">
+                <div class="habit-box name-box fw-semibold fs-5 text-center flex-grow-1">Drink water 5L</div>
+                <div class="habit-box days-box text-center flex-grow-1">5 Days</div>
+                <div class="habit-box action-box text-center flex-grow-1 d-flex justify-content-center gap-2">
+                    <button class="btn btn-dark btn-done btn-sm"><input type="checkbox" class="me-1"> Mark as Done</button>
+                    <button class="btn btn-outline-danger btn-delete btn-sm">Delete</button>
+                </div>
+            </div>
+
+            <div class="habit-row p-3 bg-light rounded d-flex align-items-center justify-content-between border-start border-4 border-secondary">
+                <div class="habit-box name-box fw-semibold fs-5 text-center flex-grow-1">Walk 5km</div>
+                <div class="habit-box days-box text-center flex-grow-1">4 Days</div>
+                <div class="habit-box action-box text-center flex-grow-1 d-flex justify-content-center gap-2">
+                    <button class="btn btn-dark btn-done btn-sm"><input type="checkbox" class="me-1"> Mark as Done</button>
+                    <button class="btn btn-outline-danger btn-delete btn-sm">Delete</button>
+                </div>
+            </div>
+
+            <div class="habit-row p-3 bg-light rounded d-flex align-items-center justify-content-between border-start border-4 border-secondary">
+                <div class="habit-box name-box fw-semibold fs-5 text-center flex-grow-1">Studying</div>
+                <div class="habit-box days-box text-center flex-grow-1">7 Days</div>
+                <div class="habit-box action-box text-center flex-grow-1 d-flex justify-content-center gap-2">
+                    <button class="btn btn-dark btn-done btn-sm"><input type="checkbox" class="me-1"> Mark as Done</button>
+                    <button class="btn btn-outline-danger btn-delete btn-sm">Delete</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <div id="habitModal" class="modal-overlay">
+        <div class="modal-content bg-white p-4 rounded shadow-lg">
+            <div class="modal-header border-bottom pb-2 mb-3 d-flex justify-content-between align-items-center">
+                <h3 class="m-0 fs-5">Add New Habit</h3>
+                <span class="close-btn fs-3" style="cursor:pointer;">&times;</span>
+            </div>
+            <form id="habitForm">
+                <div class="mb-3 text-start">
+                    <label for="new-habit-name" class="form-label fw-semibold">Habit Name</label>
+                    <input type="text" id="new-habit-name" class="form-control" placeholder="E.g., Read Books, Gym" required>
+                </div>
+                <div class="mb-3 text-start">
+                    <label for="new-habit-days" class="form-label fw-semibold">Goal (Days/Target)</label>
+                    <input type="text" id="new-habit-days" class="form-control" placeholder="E.g., 21 Days, Daily" required>
+                </div>
+                <button type="submit" class="btn btn-dark w-100">Add Habit</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="bg-white text-center py-3 border-top mt-auto shadow-sm">
+        <div class="container">
+            <p class="m-0 text-muted small">&copy; 2026 Routinefy. Built for ICT 1209 Mini Project - Rajarata University of Sri Lanka.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Toggle Mark as Done Logic Function
+        function attachDoneEvent(button) {
+            button.addEventListener('click', function(e) {
+                const checkbox = this.querySelector('input[type="checkbox"]');
+                const currentHabitRow = this.closest('.habit-row');
+
+                if (e.target !== checkbox) {
+                    checkbox.checked = !checkbox.checked;
+                }
+
+                if (checkbox.checked) {
+                    currentHabitRow.classList.add('completed');
+                    currentHabitRow.style.opacity = '0.6';
+                    currentHabitRow.style.textDecoration = 'line-through';
+                    this.classList.replace('btn-dark', 'btn-success');
+                    this.innerHTML = '<input type="checkbox" class="me-1" checked> Done ✔';
+                } else {
+                    currentHabitRow.classList.remove('completed');
+                    currentHabitRow.style.opacity = '1';
+                    currentHabitRow.style.textDecoration = 'none';
+                    this.classList.replace('btn-success', 'btn-dark');
+                    this.innerHTML = '<input type="checkbox" class="me-1"> Mark as Done';
+                }
+            });
+        }
+
+        // Delete Habit Logic Function
+        function attachDeleteEvent(button) {
+            button.addEventListener('click', function() {
+                if (confirm("Are you sure you want to delete this habit?")) {
+                    const habitRow = this.closest('.habit-row');
+                    habitRow.remove();
+                }
+            });
+        }
+
+        // Apply events to existing static elements
+        document.querySelectorAll('.btn-done').forEach(attachDoneEvent);
+        document.querySelectorAll('.btn-delete').forEach(attachDeleteEvent);
+
+        // Modal Elements
+        const modal = document.getElementById('habitModal');
+        const btnAdd = document.querySelector('.btn-add');
+        const closeBtn = document.querySelector('.close-btn');
+        const habitForm = document.getElementById('habitForm');
+        const habitsList = document.querySelector('.habits-list');
+
+        btnAdd.addEventListener('click', () => { modal.style.display = 'flex'; });
+        closeBtn.addEventListener('click', () => { modal.style.display = 'none'; });
+        window.addEventListener('click', (e) => { if (e.target === modal) { modal.style.display = 'none'; } });
+
+        // Submit Dynamic Habit Form
+        habitForm.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            const name = document.getElementById('new-habit-name').value;
+            const days = document.getElementById('new-habit-days').value;
+
+            const newRow = document.createElement('div');
+            newRow.className = 'habit-row p-3 bg-light rounded d-flex align-items-center justify-content-between border-start border-4 border-secondary';
+            newRow.innerHTML = `
+                <div class="habit-box name-box fw-semibold fs-5 text-center flex-grow-1">${name}</div>
+                <div class="habit-box days-box text-center flex-grow-1">${days}</div>
+                <div class="habit-box action-box text-center flex-grow-1 d-flex justify-content-center gap-2">
+                    <button class="btn btn-dark btn-done btn-sm"><input type="checkbox" class="me-1"> Mark as Done</button>
+                    <button class="btn btn-outline-danger btn-delete btn-sm">Delete</button>
+                </div>
+            `;
+
+            // Attach listeners to newly generated elements
+            attachDoneEvent(newRow.querySelector('.btn-done'));
+            attachDeleteEvent(newRow.querySelector('.btn-delete'));
+
+            habitsList.prepend(newRow);
+            habitForm.reset();
+            modal.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
