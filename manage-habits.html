@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routinefy - Manage Habits</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background-color: #f4f6f9; color: #333; display: flex; min-height: 100vh; }
+        
+        .sidebar { width: 250px; background-color: #1e272e; color: #fff; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+        .sidebar h2 { font-size: 22px; margin-bottom: 30px; color: #ff4757; }
+        .sidebar ul { list-style: none; }
+        .sidebar ul li { margin-bottom: 15px; }
+        .sidebar ul li a { color: #dcdde1; text-decoration: none; font-size: 16px; display: block; padding: 10px; border-radius: 5px; }
+        .sidebar ul li a.active, .sidebar ul li a:hover { background-color: #ff4757; color: #fff; }
+        .logout-btn { background-color: #eb4d4b; color: white; padding: 10px; text-align: center; text-decoration: none; border-radius: 5px; font-weight: bold; }
+
+        .main-content { flex: 1; padding: 30px; }
+        .header { margin-bottom: 25px; }
+        
+        .table-container { background: #fff; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th, td { padding: 12px 15px; border-bottom: 1px solid #dcdde1; }
+        th { background-color: #f8f9fa; color: #718093; }
+
+        .tag { background-color: #2ed57320; color: #2ed573; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+        
+        .btn-remove { 
+            background-color: #ff4757; 
+            color: #fff; 
+            border: none; 
+            padding: 6px 12px; 
+            border-radius: 4px; 
+            cursor: pointer; 
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-remove:hover {
+            background-color: #e03847;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div>
+            <h2>Routinefy Admin</h2>
+            <ul>
+                <li><a href="admin-dashboard.html">📊 Dashboard</a></li>
+                <li><a href="manage-users.html">👥 Manage Users</a></li>
+                <li><a href="manage-habits.html" class="active">🎯 Manage Habits</a></li>
+                <li><a href="settings.html">⚙️ System Settings</a></li>
+            </ul>
+        </div>
+        <a href="admin-login.html" class="logout-btn">Log Out</a>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Habit Tracker Overview</h1>
+        </div>
+
+        <div class="table-container">
+            <table id="habitsTable">
+                <thead>
+                    <tr>
+                        <th>Habit ID</th>
+                        <th>Habit Name</th>
+                        <th>Category</th>
+                        <th>Created By</th>
+                        <th>Streak Count</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#HBT-501</td>
+                        <td>Drink 2L Water</td>
+                        <td>Health</td>
+                        <td>Kasun Perera</td>
+                        <td><span class="tag">12 Days 🔥</span></td>
+                        <td><button class="btn-remove" onclick="removeHabit(this)">Remove Habit</button></td>
+                    </tr>
+                    <tr>
+                        <td>#HBT-502</td>
+                        <td>Read 10 Pages</td>
+                        <td>Education</td>
+                        <td>Nimali Silva</td>
+                        <td><span class="tag">5 Days 🔥</span></td>
+                        <td><button class="btn-remove" onclick="removeHabit(this)">Remove Habit</button></td>
+                    </tr>
+                    <tr>
+                        <td>#HBT-503</td>
+                        <td>Morning Workout</td>
+                        <td>Fitness</td>
+                        <td>Ruwan Fernando</td>
+                        <td><span class="tag">30 Days 🔥</span></td>
+                        <td><button class="btn-remove" onclick="removeHabit(this)">Remove Habit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Habit එක Table එකෙන් අයින් කිරීමට JavaScript -->
+    <script>
+        function removeHabit(button) {
+            // Confirm Alert එකක් පෙන්වීම (වැරදීමකින් ක්ලික් වීම් වැළැක්වීමට)
+            const confirmDelete = confirm("Are you sure you want to remove this habit?");
+            
+            if (confirmDelete) {
+                // Click කළ button එක තියෙන Row එක (<tr>) සොයාගෙන අයින් කිරීම
+                const row = button.closest('tr');
+                row.remove();
+            }
+        }
+    </script>
+
+</body>
+</html>
