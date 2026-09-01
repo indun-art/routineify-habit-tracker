@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routinefy - Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Basic Dashboard Layout & Styling */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            width: 250px;
+            background-color: #1e272e;
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar h2 {
+            font-size: 22px;
+            margin-bottom: 30px;
+            color: #ff4757;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar ul li a {
+            color: #dcdde1;
+            text-decoration: none;
+            font-size: 16px;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .sidebar ul li a.active, .sidebar ul li a:hover {
+            background-color: #ff4757;
+            color: #fff;
+        }
+
+        .logout-btn {
+            background-color: #eb4d4b;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .card h3 {
+            font-size: 14px;
+            color: #718093;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2f3640;
+        }
+
+        /* User Table */
+        .table-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .table-container h3 {
+            margin-bottom: 15px;
+            color: #2f3640;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #dcdde1;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            color: #718093;
+        }
+
+        .status {
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .status.active {
+            background-color: #e1b12c20;
+            color: #44bd32;
+        }
+
+        .status.blocked {
+            background-color: #e8411820;
+            color: #c23616;
+        }
+
+        .action-btn {
+            background: none;
+            border: 1px solid #718093;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .action-btn:hover {
+            background-color: #ff4757;
+            color: #fff;
+            border-color: #ff4757;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar with Updated Navigation Links -->
+    <div class="sidebar">
+        <div>
+            <h2>Routinefy Admin</h2>
+            <ul>
+                <li><a href="admin-dashboard.html" class="active">📊 Dashboard</a></li>
+                <li><a href="manage-users.html">👥 Manage Users</a></li>
+                <li><a href="manage-habits.html">🎯 Manage Habits</a></li>
+                <li><a href="settings.html">⚙️ System Settings</a></li>
+            </ul>
+        </div>
+        <a href="admin-login.html" class="logout-btn">Log Out</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="header">
+            <h1>Admin Overview</h1>
+            <p>Welcome back, <strong>Admin</strong>!</p>
+        </div>
+
+        <!-- Stat Cards -->
+        <div class="stats-grid">
+            <div class="card">
+                <h3>TOTAL USERS</h3>
+                <p>1,248</p>
+            </div>
+            <div class="card">
+                <h3>ACTIVE HABITS</h3>
+                <p>5,890</p>
+            </div>
+            <div class="card">
+                <h3>DAILY COMPLETIONS</h3>
+                <p>842</p>
+            </div>
+            <div class="card">
+                <h3>SYSTEM STATUS</h3>
+                <p style="color: #44bd32; font-size: 20px;">● Operational</p>
+            </div>
+        </div>
+
+        <!-- User Management Table -->
+        <div class="table-container">
+            <h3>Recent Users</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#USR-001</td>
+                        <td>Kasun Perera</td>
+                        <td>kasun@gmail.com</td>
+                        <td><span class="status active">Active</span></td>
+                        <td><a href="manage-users.html"><button class="action-btn">Edit</button></a></td>
+                    </tr>
+                    <tr>
+                        <td>#USR-002</td>
+                        <td>Nimali Silva</td>
+                        <td>nimali@gmail.com</td>
+                        <td><span class="status active">Active</span></td>
+                        <td><a href="manage-users.html"><button class="action-btn">Edit</button></a></td>
+                    </tr>
+                    <tr>
+                        <td>#USR-003</td>
+                        <td>Ruwan Fernando</td>
+                        <td>ruwan@outlook.com</td>
+                        <td><span class="status blocked">Blocked</span></td>
+                        <td><a href="manage-users.html"><button class="action-btn">Unblock</button></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

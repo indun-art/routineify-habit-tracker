@@ -1,0 +1,7 @@
+node_modules/
+database.sqlite
+.env
+.DS_Store
+PortableGit/
+PortableGit.7z.exe
+git-installer.exe

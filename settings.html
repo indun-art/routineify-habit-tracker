@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routinefy - System Settings</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+        body { background-color: #f4f6f9; color: #333; display: flex; min-height: 100vh; }
+        
+        .sidebar { width: 250px; background-color: #1e272e; color: #fff; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+        .sidebar h2 { font-size: 22px; margin-bottom: 30px; color: #ff4757; }
+        .sidebar ul { list-style: none; }
+        .sidebar ul li { margin-bottom: 15px; }
+        .sidebar ul li a { color: #dcdde1; text-decoration: none; font-size: 16px; display: block; padding: 10px; border-radius: 5px; }
+        .sidebar ul li a.active, .sidebar ul li a:hover { background-color: #ff4757; color: #fff; }
+        .logout-btn { background-color: #eb4d4b; color: white; padding: 10px; text-align: center; text-decoration: none; border-radius: 5px; font-weight: bold; }
+
+        .main-content { flex: 1; padding: 30px; }
+        .settings-card { background: #fff; padding: 25px; border-radius: 10px; max-width: 600px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 14px; }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+
+        .btn-save { background-color: #ff4757; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div>
+            <h2>Routinefy Admin</h2>
+            <ul>
+                <li><a href="admin-dashboard.html">📊 Dashboard</a></li>
+                <li><a href="manage-users.html">👥 Manage Users</a></li>
+                <li><a href="manage-habits.html">🎯 Manage Habits</a></li>
+                <li><a href="settings.html" class="active">⚙️ System Settings</a></li>
+            </ul>
+        </div>
+        <a href="admin-login.html" class="logout-btn">Log Out</a>
+    </div>
+
+    <div class="main-content">
+        <h1 style="margin-bottom: 25px;">System Settings</h1>
+
+        <div class="settings-card">
+            <form>
+                <div class="form-group">
+                    <label>App Name</label>
+                    <input type="text" value="Routinefy Habit Tracker">
+                </div>
+
+                <div class="form-group">
+                    <label>Admin Security PIN Change</label>
+                    <input type="password" placeholder="Enter new Security PIN">
+                </div>
+
+                <div class="form-group">
+                    <label>User Registration Status</label>
+                    <select>
+                        <option value="open">Open (Anyone can register)</option>
+                        <option value="closed">Closed (Maintenance Mode)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-save">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

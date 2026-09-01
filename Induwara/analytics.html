@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Routinefy - Analytics</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body class="dashboard-body d-flex flex-column min-vh-100">
+
+    <header class="dashboard-header bg-white shadow-sm py-3 px-4 d-flex justify-content-between align-items-center">
+        <h1 class="logo m-0 fw-bold fs-3">Routinefy</h1>
+        <nav class="nav-links d-flex gap-3">
+            <a href="dashboard.html" class="nav-link pt-1 text-dark">Dashboard</a>
+            <a href="#" class="btn btn-dark btn-sm rounded-pill px-3 active">Analytics</a>
+            <a href="login.html" class="nav-link pt-1 text-dark">Log out</a>
+        </nav>
+    </header>
+
+    <main class="dashboard-container container my-5 flex-grow-1">
+        
+        <div class="welcome-row mb-4">
+            <h2 class="fs-4 m-0">Welcome User 👋</h2>
+        </div>
+
+        <div class="row g-4 mb-5 text-center">
+            <div class="col-md-4">
+                <div class="p-4 rounded fw-semibold text-dark fs-5" style="background-color: #cdd1d3;">Total habits active</div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 rounded fw-semibold text-dark fs-5" style="background-color: #cdd1d3;">Highest streak</div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 rounded fw-semibold text-dark fs-5" style="background-color: #cdd1d3;">Completion Rate (80%)</div>
+            </div>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-5">
+                <div class="p-4 rounded text-center d-flex flex-column align-items-center shadow-sm" style="background-color: #cdd1d3;">
+                    <h3 class="fs-5 fw-bold mb-4 text-dark">Weekly Progress Chart</h3>
+                    <canvas id="weeklyChart" style="max-width: 250px; max-height: 250px;"></canvas>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="p-4 rounded text-center d-flex flex-column align-items-center shadow-sm" style="background-color: #cdd1d3;">
+                    <h3 class="fs-5 fw-bold mb-4 text-dark">Monthly Progress Chart</h3>
+                    <canvas id="monthlyChart" style="max-width: 300px; max-height: 250px;"></canvas>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-white text-center py-3 border-top mt-auto shadow-sm">
+        <div class="container">
+            <p class="m-0 text-muted small">&copy; 2026 Routinefy. Built for ICT 1209 Mini Project - Rajarata University of Sri Lanka.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        // 1. Pie Chart
+        const ctxPie = document.getElementById('weeklyChart').getContext('2d');
+        new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: ['Done', 'Remaining'],
+                datasets: [{
+                    data: [80, 20],
+                    backgroundColor: ['#2b2b2b', '#ffffff'],
+                    borderWidth: 1
+                }]
+            }
+        });
+
+        // 2. Bar Chart
+        const ctxBar = document.getElementById('monthlyChart').getContext('2d');
+        new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4'],
+                datasets: [{
+                    label: 'Habits Completed',
+                    data: [5, 12, 8, 15],
+                    backgroundColor: '#2b2b2b'
+                }]
+            },
+            options: { scales: { y: { beginAtZero: true } } }
+        });
+    </script>
+</body>
+</html>
