@@ -1,0 +1,231 @@
+/* --- Dashboard Specific Styles --- */
+
+.dashboard-body {
+    background-image: url('background.png'); /* බැක්ග්‍රවුන්ඩ් ඉමේජ් එක */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    display: block; /* Flexbox එක අයින් කර සාමාන්‍ය පරිදි ඉහල සිට පහලට පෙන්වීමට */
+    height: auto;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Header Navbar */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 15px 40px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.dashboard-header .logo {
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+.nav-btn.active {
+    background: #e0e0e0;
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: #000;
+}
+
+/* Container Layout */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Top Row */
+.welcome-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.btn-add {
+    background: #2b2b2b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Habits Grid Rows */
+.habits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.habit-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* තීරු 3කට සමසේ බෙදීම */
+    gap: 20px;
+    background: #f0f0f0; /* ලා අළු පාට පසුබිම */
+    padding: 20px;
+}
+
+.habit-box {
+    background: #cdd1d3; /* කොටු වල තද අළු පාට */
+    padding: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 500;
+    border-radius: 4px;
+    color: #1a1a1a;
+}
+
+/* Mark as Done Button */
+.btn-done {
+    background: #2b2b2b;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-done input[type="checkbox"] {
+    transform: scale(1.2);
+    accent-color: #2b2b2b;
+}
+/* --- Analytics Page Specific Styles --- */
+
+/* Top row 3 cards setup */
+.analytics-top-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; /* තීරු 3කට සමානව බෙදීම */
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.analytics-box {
+    background: #cdd1d3; /* පින්තූරයේ තියෙන අළු පාට */
+    padding: 30px 20px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    text-align: center;
+    border-radius: 4px;
+    color: #1a1a1a;
+}
+
+/* Bottom charts layout grid */
+.charts-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* වම සහ දකුණ තීරු 2කට බෙදීම */
+    gap: 40px;
+}
+
+.chart-card {
+    background: #cdd1d3; /* ප්‍රස්තාර පසුබිමේ අළු පාට */
+    padding: 30px;
+    border-radius: 4px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.chart-card h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 30px;
+    color: #1a1a1a;
+}
+
+/* 1. CSS Weekly Pie Chart (වටකුරු ප්‍රස්තාරය) */
+.pie-chart-box {
+    width: 220px;
+    height: 220px;
+    border: 3px solid #1a1a1a; /* කළු පාට වටකුරු ඉර */
+    border-radius: 50%;
+    position: relative;
+}
+
+/* පින්තූරයේ පරිදි 1/4 කොටස වෙන් කර පෙන්වීමට */
+.pie-segment {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    width: 110px;
+    height: 110px;
+    border-left: 3px solid #1a1a1a;
+    border-bottom: 3px solid #1a1a1a;
+}
+
+/* 2. CSS Monthly Bar Chart (කූරු ප්‍රස්තාරය) */
+.bar-chart-box {
+    width: 100%;
+    max-width: 300px;
+    height: 220px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end; /* කූරු යට සිට ඉහලට සිටීමට */
+    padding: 0 20px;
+}
+
+.bar-line {
+    width: 4px; /* සිහින් කළු ඉරි */
+    background-color: #1a1a1a;
+    border-radius: 2px;
+}
+
+/* ඉරි වල උස ප්‍රමාණයන් (Heights) */
+.bar-short { height: 70px; }
+.bar-tall { height: 180px; }
+.bar-medium { height: 120px; }
+/* Custom Modal Overlay */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+.modal-content {
+    width: 100%;
+    max-width: 450px;
+    animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}

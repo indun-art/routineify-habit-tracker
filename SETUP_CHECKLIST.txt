@@ -1,0 +1,20 @@
+ROUTINEFY FINAL TEST CHECKLIST
+
+[ ] Apache starts
+[ ] MySQL starts
+[ ] database.sql imports successfully
+[ ] User registration works
+[ ] User login works
+[ ] Logout works
+[ ] Add habit works
+[ ] Complete habit works
+[ ] Delete/manage habit works
+[ ] Analytics loads database data
+[ ] Forgot-password flow works
+[ ] Contact form saves a message
+[ ] Admin login works
+[ ] Manage users works
+[ ] Manage habits works
+[ ] Settings save correctly
+[ ] All navigation links work
+[ ] Mobile layout checked
