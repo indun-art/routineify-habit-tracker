@@ -1,0 +1,30 @@
+ROUTINEFY FINAL TEST CHECKLIST
+
+[ ] Apache starts
+[ ] MySQL starts
+[ ] database.sql imports successfully
+[ ] User registration works
+[ ] User login works
+[ ] Admin login works
+[ ] Logout works
+[ ] Add habit works
+[ ] Edit habit works
+[ ] Complete / uncomplete habit works
+[ ] Delete habit works
+[ ] Category dropdown works
+[ ] Create custom category works
+[ ] Reminder can be enabled and saved
+[ ] Browser reminder appears when dashboard is open
+[ ] Analytics loads real database data
+[ ] Weekly and 30-day charts load
+[ ] Category analytics chart loads
+[ ] Forgot-password flow works
+[ ] Contact form saves a message
+[ ] Admin dashboard loads stats/messages/users
+[ ] Manage users works
+[ ] Admin can create user/admin accounts
+[ ] Manage habits works
+[ ] Admin habit delete works
+[ ] Settings save/load correctly
+[ ] All navigation links work
+[ ] Mobile layout checked
