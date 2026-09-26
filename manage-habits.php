@@ -69,7 +69,7 @@
                         <th>Habit Name</th>
                         <th>Category</th>
                         <th>Created By</th>
-                        <th>Streak Count</th>
+                        <th>Completed Check-ins</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -99,7 +99,7 @@
                         <td>${h.name}</td>
                         <td>${h.category}</td>
                         <td>${h.created_by}</td>
-                        <td><span class="tag">${h.streak} Days 🔥</span></td>
+                        <td><span class="tag">${h.completed_count} check-ins</span></td>
                         <td><button class="btn-remove" onclick="removeHabit(${h.id})">Remove Habit</button></td>
                     `;
                     tbody.appendChild(tr);
